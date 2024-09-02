@@ -5,7 +5,7 @@ FROM node:20-alpine as build
 WORKDIR /app
 
 # Copy package.json and install dependencies
-COPY package.json ./
+COPY package.json postcss.config.js tailwind.config.js  ./
 RUN npm install
 
 # Copy the source code
