@@ -1,0 +1,76 @@
+version: '3.8'
+
+services:
+  # Backend Development
+  backend-dev:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.dev
+    env_file:
+      - .env
+    volumes:
+      - ./backend:/app  # Mount the backend code
+      - /app/tmp         # Air's temp directory
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  # Backend Production
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  # Frontend Development
+  frontend-dev:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./frontend:/app  # Mount the frontend code
+      - /app/node_modules
+    ports:
+      - "5173:5173"
+    networks:
+      - app-network
+
+  # Frontend Production
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - app-network
+
+  # Database
+  db:
+    image: postgres:16-alpine
+    env_file:
+      - .env
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  postgres-data:

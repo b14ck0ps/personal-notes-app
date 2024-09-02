@@ -1,0 +1,61 @@
+# Binaries for programs and libraries
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Compiled object files
+*.o
+*.a
+*.out
+
+# Dependencies
+/vendor/
+node_modules/
+
+# Build directories
+/tmp/
+dist/
+out/
+
+# Logs and debug files
+*.log
+
+# Air configuration files
+.air.toml
+
+# Go build artifacts
+*.test
+*.exe
+
+# Node.js dependency directories
+node_modules/
+
+# Yarn specific files
+yarn.lock
+
+# dotenv environment variable files
+.env
+.env.*
+
+# IDE and Editor directories and files
+.vscode/
+.idea/
+.DS_Store
+
+# Docker-specific files
+docker-compose.override.yml
+
+# Go modules
+go.sum
+go.mod
+
+# macOS specific files
+.DS_Store
+
+# Ignore SQL dumps or database files
+*.sql
+
+# Ignore Nginx files if any
+nginx.conf
