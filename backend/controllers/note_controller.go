@@ -13,6 +13,8 @@ func CreateNote(c *fiber.Ctx) error {
 		return err
 	}
 
+	userId := c.Locals("userId").(uint)
+	note.UserID = userId
 	database.DB.Create(&note)
 	return c.JSON(note)
 }

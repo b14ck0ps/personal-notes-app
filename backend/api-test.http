@@ -28,7 +28,7 @@ Content-Type: application/json
 Authorization: Bearer {{token}} 
 
 {
-    "title": "First Note 2",
+    "title": "new note",
     "content": "This is the content of the two note."
 }
 
