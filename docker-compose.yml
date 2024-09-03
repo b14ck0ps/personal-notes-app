@@ -38,8 +38,9 @@ services:
     volumes:
       - ./frontend:/app  # Mount the frontend code
       - /app/node_modules
+      - /app/.next
     ports:
-      - "5173:5173"
+      - "3000:3000"
     networks:
       - app-network
 
