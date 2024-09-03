@@ -1,0 +1,60 @@
+### Register a new user
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+    "name": "Azran Hossain",
+    "email": "azran@example.com",
+    "password": "securepassword"
+}
+
+### Login to get a JWT token
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+    "email": "azran@example.com",
+    "password": "securepassword"
+}
+
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3MjU0MjgzMTQsInN1YiI6MX0.vtp04ZmVuSfNacIf5s2HEXqMEyufa185Z0LEzqi6Xss
+
+
+
+######## CRUD Operations ########
+### Create a new note
+POST http://localhost:8080/notes
+Content-Type: application/json
+Authorization: Bearer {{token}} 
+
+{
+    "title": "First Note 2",
+    "content": "This is the content of the two note."
+}
+
+
+### Get all notes for the authenticated user
+GET http://localhost:8080/notes
+Authorization: Bearer {{token}}
+
+
+### Get a specific note by ID
+GET http://localhost:8080/notes/3
+Authorization: Bearer {{token}}
+
+### Update a note by ID
+PUT http://localhost:8080/notes/1
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+    "title": "Updated First Note",
+    "content": "This is the updated content of the first note."
+}
+
+### Delete a note by ID
+DELETE http://localhost:8080/notes/3
+Authorization: Bearer {{token}}
+
+
+
