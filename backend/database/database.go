@@ -11,7 +11,7 @@ var DB *gorm.DB
 
 // ConnectDB initializes the database connection
 func ConnectDB() {
-	dsn := "host=localhost user=youruser password=yourpassword dbname=yourdbname port=5432 sslmode=disable TimeZone=Asia/Shanghai"
+	dsn := "host=localhost user=postgres password=postgres dbname=personal_notes port=5432 sslmode=disable TimeZone=Asia/Dhaka"
 
 	database, err := gorm.Open(postgres.Open(dsn), &gorm.Config{})
 	if err != nil {
